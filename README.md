@@ -7,12 +7,12 @@ Execute a command with environmet variables loaded form `.env` file
 Usage
 -----
 
-    ./envify.sh <command>
+    ./enver.sh <command>
 
 Example: loading `.env` from the current directory
 
     echo "FOO=BAR" > .env
-    ./envify.sh printenv | grep FOO
+    ./enver.sh printenv | grep FOO
     # FOO=BAR
     rm .env
 
@@ -28,17 +28,17 @@ or from any of it's parent directories
     echo 'FOO=TWO' > /tmp/one/two/.env
     echo 'FOO=ONE' > /tmp/one/.env
 
-    ./envify.sh /tmp/one/two/three/magic.sh | grep FOO
+    ./enver.sh /tmp/one/two/three/magic.sh | grep FOO
     # FOO=THREE
 
     rm /tmp/one/two/three/.env
-    ./envify.sh /tmp/one/two/three/magic.sh | grep FOO
+    ./enver.sh /tmp/one/two/three/magic.sh | grep FOO
     # FOO=TWO
 
     rm /tmp/one/two/.env
-    ./envify.sh /tmp/one/two/three/magic.sh | grep FOO
+    ./enver.sh /tmp/one/two/three/magic.sh | grep FOO
     # FOO=ONE
 
     rm /tmp/one/.env
-    ./envify.sh /tmp/one/two/three/magic.sh | grep FOO
+    ./enver.sh /tmp/one/two/three/magic.sh | grep FOO
     # Error: couldn't find .env
