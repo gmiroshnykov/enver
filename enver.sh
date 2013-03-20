@@ -56,7 +56,11 @@ touch $TMPENV
 chmod 600 $TMPENV
 
 while read line; do
-    echo export $line
+    # trim whitespace
+    line=`echo "$line" | sed -e 's/^ *//g' -e 's/ *$//g'`
+    if [ "$line" != "" ]; then
+        echo export $line
+    fi
 done < $DOTENV > $TMPENV
 
 source $TMPENV
